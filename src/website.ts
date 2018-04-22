@@ -24,7 +24,10 @@ export class Website {
                     Body: Buffer.concat(data),
                     Bucket: this.bucketName,
                     Key: fileName,
-                    ACL: "public-read"
+                    ACL: "public-read",
+                    Metadata: {
+                      "Cache-Control": "max-age=300",
+                    }
                 };
                 const contentType = mimeTypes.lookup(fileName);
                 if (contentType) {
